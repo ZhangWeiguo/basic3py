@@ -79,7 +79,7 @@ class LoggerCustom:
     def flush(self):
         ymdh = time.strftime("%Y%m%d%H")
         file_name = self.file_name%(self.app_name, ymdh)
-        f = file(file_name, 'a+')
+        f = open(file_name, 'a+')
         if self.is_unix:
             fcntl.flock(f, fcntl.LOCK_EX)
             f.writelines(self.buffer)

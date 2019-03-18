@@ -1,6 +1,6 @@
 # -*- encoding:utf-8 -*-
 
-import configparser,os
+import configparser,os,sys
 import xml.etree.ElementTree as ET
 
 '''
@@ -160,3 +160,6 @@ class XmlConfiger:
 
 
     
+class CmdConfiger:
+    def __init__(self):
+        pass
