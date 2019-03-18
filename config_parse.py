@@ -160,6 +160,13 @@ class XmlConfiger:
 
 
     
-class CmdConfiger:
-    def __init__(self):
-        pass
+def cmd_parse(cmdline):
+    d = {}
+    for i in cmdline:
+        line = i.split("=")
+        if len(line) == 2:
+            keyline,value = line[0],line[1]
+            if keyline.startswith("--"):
+                key = keyline[2:]
+                d[key] = value
+    return d
