@@ -57,38 +57,31 @@ class LoggerCustom:
         self.buffer_num = buffer_num
         self.buffer = []
         self.app_name = app_name
-        self.file_name = "%s.%s.log"
-        if 'Windows' in platform.system():
-            self.is_unix = False
-        else:
-            import fcntl
-            self.is_unix = True
+        self.file_name = "%s.%s.log"%(self.app_name, time.strftime("%Y%m%d%H"))
+        self.file = open(self.file_name, 'a+')
     
     def log(self,data):
-        num = len(self.buffer)
-        if num <= self.buffer_num:
-            if data.strip() != "":
-                name = sys._getframe().f_back.f_code.co_filename
-                line = str(sys._getframe().f_back.f_lineno)
-                dt = time.strftime("%Y-%m-%d %H:%M:%S")
-                s = "log_time=%s`locate=%s`data=%s\n"%(dt, name+":"+line, data)
-                self.buffer.append(s)
-        else:
+        if data.strip() != "":
+            name = sys._getframe().f_back.f_code.co_filename
+            line = str(sys._getframe().f_back.f_lineno)
+            dt = time.strftime("%Y-%m-%d %H:%M:%S")
+            s = "log_time=%s`locate=%s`data=%s\n"%(dt, name+":"+line, data)
+            self.buffer.append(s)
+        if len(self.buffer) >= self.buffer_num:
             self.flush()
     
     def flush(self):
-        ymdh = time.strftime("%Y%m%d%H")
-        file_name = self.file_name%(self.app_name, ymdh)
-        f = open(file_name, 'a+')
-        if self.is_unix:
-            fcntl.flock(f, fcntl.LOCK_EX)
-            f.writelines(self.buffer)
-            fcntl.flock(f,fcntl.LOCK_UN)
-        else:
-            # windows 下未找到文件锁方式
-            f.writelines(self.buffer)
-        f.close()    
-        self.buffer = []
+        file_name = "%s.%s.log"%(self.app_name, time.strftime("%Y%m%d%H"))
+        if file_name != self.file_name:
+            self.file_name = file_name
+            self.file.close()
+            self.file = open(self.file_name, 'a+')
+        self.file.writelines(self.buffer) 
+        self.buffer.clear()
+    
+    def close(self):
+        self.flush()
+        self.file.close()
 
             
         
