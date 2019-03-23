@@ -9,21 +9,16 @@ logger = Logger("Test","test", rotate = "Size", max_bytes = 1028, keep_num = 48)
 logger = Logger("Test","test", rotate = "None")
 '''
 
-
-
-
 def Logger(app_name, 
             file_name, 
             rotate       =   "None", 
             when         =   'H', 
             keep_num     =   24, 
-            max_bytes    =   1024*1024*10,
-            max_buffer   =   100 ):
+            max_bytes    =   1024*1024*10):
     logger = logging.getLogger(app_name)
     formater = logging.Formatter(
         fmt         = "%(asctime)s %(filename)10s[line:%(lineno)5d] %(levelname)-8s %(message)s",
         datefmt     = "%Y-%m-%d %H:%M:%S")
-    
     if rotate == 'Time':
         file_handler = TimedRotatingFileHandler(file_name, 
                                                 when        =   when, 
