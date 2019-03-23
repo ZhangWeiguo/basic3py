@@ -13,6 +13,7 @@ class MultiThreads(ThreadPoolExecutor):
     def submit(self, fn, *args, **kwargs):
         fs = super(MultiThreads, self).submit(fn, *args, **kwargs)
         self.works.append(fs)
+        return fs
 
     def wait_all_completed(self, timeout = None):
         wait(self.works, timeout = timeout, return_when = ALL_COMPLETED)
@@ -31,6 +32,7 @@ class MultiProcess(ProcessPoolExecutor):
     def submit(self, fn, *args, **kwargs):
         fs = super(MultiProcess, self).submit(fn, *args, **kwargs)
         self.works.append(fs)
+        return fs
 
     def wait_all_completed(self, timeout = None):
         wait(self.works, timeout = timeout, return_when = ALL_COMPLETED)
