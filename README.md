@@ -3,3 +3,4 @@
     * config_parse      参数解析
     * concurrency       并发
     * mysql_client      Mysql操作
+    * http_client       HTTP客户端
