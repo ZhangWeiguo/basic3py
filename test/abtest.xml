@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<experiment>
+    <bucket_num>100000000</bucket_num>
+    <exp exp_id="0" exp_name="exp0" exp_rate="0.3" layered="0"></exp>
+    <exp exp_id="1" exp_name="exp1" exp_rate="0.3" layered="0"></exp>
+    <exp exp_id="2" exp_name="exp2" exp_rate="0.2" layered="1">
+        <layer layer_id="0" layer_name="exp2_layer0">
+            <layer layer_id="0" layer_name="exp2_layer0_sublayer0" layer_rate="0.2"></layer>
+            <layer layer_id="1" layer_name="exp2_layer0_sublayer1" layer_rate="0.2"></layer>
+            <layer layer_id="2" layer_name="exp2_layer0_sublayer2" layer_rate="0.6"></layer>
+        </layer>
+        <layer layer_id="1" layer_name="exp2_layer1">
+            <layer layer_id="0" layer_name="exp2_layer1_sublayer0" layer_rate="0.8"></layer>
+            <layer layer_id="1" layer_name="exp2_layer0_sublayer1" layer_rate="0.2"></layer>
+        </layer>
+    </exp>
+    <exp exp_id="3" exp_name="exp3" exp_rate="0.2" layered="1">
+        <layer layer_id="0" layer_name="exp3_layer0">
+            <layer layer_id="0" layer_name="exp3_layer0_sublayer0" layer_rate="0.4"></layer>
+            <layer layer_id="1" layer_name="exp3_layer0_sublayer1" layer_rate="0.6"></layer>
+        </layer>
+        <layer layer_id="1" layer_name="exp3_layer1">
+            <layer layer_id="0" layer_name="exp3_layer1_sublayer0" layer_rate="0.5"></layer>
+            <layer layer_id="1" layer_name="exp3_layer1_sublayer1" layer_rate="0.5"></layer>
+        </layer>
+        <layer layer_id="2" layer_name="exp3_layer2">
+            <layer layer_id="0" layer_name="exp3_layer2_sublayer0" layer_rate="0.95"></layer>
+            <layer layer_id="1" layer_name="exp3_layer2_sublayer1" layer_rate="0.05"></layer>
+        </layer>
+    </exp>
+</experiment>
