@@ -42,9 +42,6 @@ class HttpClient:
         # auth=HTTPBasicAuth('user', 'pass')
         self.__session.auth = auth
 
-    def get_auth(self):
-        return self.__session.auth
-
     def set_proxy(self, proxies):
         # proxies = {'http': 'http://localhost:8888', 'https': 'http://localhost:8888'}
         self.__session.proxies = proxies
